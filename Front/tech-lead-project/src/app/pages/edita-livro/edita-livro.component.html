@@ -1,0 +1,35 @@
+<!-- edita-livro.component.html -->
+<div class="conteudo-edita-livro">
+
+    <h2>Editar Livro</h2>
+
+    <form [formGroup]="livroForm" (ngSubmit)="pesquisarLivro()">
+        <div>
+            <label for="idLivro">ID do Livro:</label>
+            <input type="text" id="idLivro" formControlName="idLivro" />
+            <button type="button" (click)="pesquisarLivro()">Pesquisar</button>
+        </div>
+    </form>
+
+    <form *ngIf="livroEncontrado" [formGroup]="livroForm" (ngSubmit)="editarLivro()">
+        <div>
+            <label for="nome">Nome do Livro:</label>
+            <input type="text" id="nome" formControlName="nome" />
+            <div class="mensagem-erro" *ngIf="livroForm.get('nome')?.errors?.required && livroForm.get('nome')?.touched">
+                Campo Obrigatório!
+            </div>
+        </div>
+
+        <div>
+            <label for="autor">Autor do Livro:</label>
+            <input type="text" id="autor" formControlName="autor" />
+            <div class="mensagem-erro" *ngIf="livroForm.get('autor')?.errors?.required && livroForm.get('autor')?.touched">
+                Campo Obrigatório!
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="!livroForm.valid">Editar Livro</button>
+        <button type="button" (click)="voltar()">Voltar</button>
+    </form>
+
+</div>

@@ -1,0 +1,36 @@
+<div class="conteudo-login">
+
+    <form class="conteudo-form" [formGroup]="loginForm" (submit)="submitLogin()">
+
+        <h2>Login</h2>
+
+        <div>
+            <div>
+                <input class="input-login" type="text" placeholder="usuário" formControlName="usuario" />
+            </div>
+            <div class="mensagem-erro" *ngIf="loginForm.get('usuario')?.errors?.required && loginForm.get('usuario')?.touched">
+                Campo Obrigatório!
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <input class="input-login" type="password" placeholder="senha" formControlName="senha" />
+            </div>
+            <div class="mensagem-erro" *ngIf="loginForm.get('senha')?.errors?.required && loginForm.get('senha')?.touched">
+                Campo Obrigatório!
+            </div>
+        </div>
+
+        <div>
+            <button type="submit" [disabled]="!loginForm.valid">Login</button>
+        </div>
+
+        <div class="links">
+            <p>Não tem uma conta? <a routerLink="/cadastro" routerLinkActive="active">Cadastre-se</a></p>
+            <p><a routerLink="/senha" routerLinkActive="active">Esqueceu sua Senha?</a></p>
+        </div>
+
+    </form>
+
+</div>

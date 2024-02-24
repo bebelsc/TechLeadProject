@@ -1,0 +1,26 @@
+.conteudo-cliente-gerenciar-livros {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10%;
+  
+    h2 {
+      margin-bottom: 20px;
+    }
+  
+    .opcoes {
+      display: flex;
+      flex-direction: column;
+  
+      button {
+        padding: 10px;
+        margin: 5px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+    }
+  }
+  

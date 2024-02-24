@@ -1,0 +1,65 @@
+.conteudo-esqueceu-senha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10%;
+  
+    .conteudo-form {
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 30px 60px 0 #000;
+      text-align: center;
+      width: 45%;
+      height: 300px;
+      transition: all 0.5s ease-in-out;
+    }
+  
+    .mensagem-erro {
+      font-size: 14px;
+      color: red;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+  
+    label {
+      margin-bottom: 8px;
+    }
+  
+    .input-esqueceu-senha {
+      background-color: #fff;
+      border: none;
+      color: #000;
+      padding: 15px 0px;
+      text-align: center;
+      font-size: 16px;
+      margin: 5px;
+      width: 90%;
+      border: 2px solid #f6f6f6;
+      transition: all 0.5s ease-in-out;
+      border-radius: 5px;
+    }
+  
+    button {
+      padding: 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+  
+    .links {
+      margin-top: 20px;
+    }
+  
+    .links a {
+      margin-right: 20px;
+    }
+  }
+  

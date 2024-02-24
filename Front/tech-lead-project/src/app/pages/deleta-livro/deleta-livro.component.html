@@ -1,0 +1,30 @@
+<div class="conteudo-deletar-livro">
+
+    <h2>Deletar Livro</h2>
+  
+    <form [formGroup]="livroForm" (ngSubmit)="deletarLivro()">
+      <div>
+        <label for="idLivro">ID do Livro:</label>
+        <input type="text" id="idLivro" formControlName="idLivro" />
+        <div class="mensagem-erro" *ngIf="livroForm.get('idLivro')?.errors?.required && livroForm.get('idLivro')?.touched">
+          Campo Obrigatório!
+        </div>
+      </div>
+  
+      <div *ngIf="livroEncontrado">
+        <label for="nome">Nome do Livro:</label>
+        <input type="text" id="nome" formControlName="nome" [disabled]="true" />
+  
+        <label for="autor">Autor do Livro:</label>
+        <input type="text" id="autor" formControlName="autor" [disabled]="true" />
+      </div>
+  
+      <div class="botoes">
+        <button type="button" (click)="pesquisarLivro()">Pesquisar</button>
+        <button type="button" (click)="deletarLivro()" [disabled]="!livroEncontrado">Excluir</button>
+        <button type="button" (click)="cancelarDelecao()">Cancelar</button>
+      </div>
+    </form>
+  
+  </div>
+  

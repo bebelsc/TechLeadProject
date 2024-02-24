@@ -1,0 +1,27 @@
+<div class="conteudo-esqueceu-senha">
+
+    <form class="conteudo-form" [formGroup]="esqueceuSenhaForm" (submit)="submitEsqueceuSenha()">
+
+        <h2>Esqueceu sua Senha?</h2>
+
+        <div>
+            <div>
+                <label for="email">E-mail:</label>
+                <input class="input-esqueceu-senha" type="email" placeholder="Seu e-mail" formControlName="email" />
+            </div>
+            <div class="mensagem-erro" *ngIf="esqueceuSenhaForm.get('email')?.errors?.required && esqueceuSenhaForm.get('email')?.touched">
+                Campo Obrigatório!
+            </div>
+        </div>
+
+        <div>
+            <button type="submit" [disabled]="!esqueceuSenhaForm.valid">Enviar Senha</button>
+        </div>
+
+        <div class="links">
+            <p>Lembrou sua senha? <a routerLink="/login" routerLinkActive="active">Faça o Login</a></p>
+        </div>
+
+    </form>
+
+</div>

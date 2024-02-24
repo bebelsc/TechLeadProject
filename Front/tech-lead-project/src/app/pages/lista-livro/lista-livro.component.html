@@ -1,0 +1,21 @@
+<div class="conteudo-lista-livro">
+    <h2>Lista de Livros</h2>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Autor</th>
+          <th>Data de Cadastro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let livro of livros">
+          <td>{{ livro.nome }}</td>
+          <td>{{ livro.autor }}</td>
+          <td>{{ livro.dataCadastro | date: 'dd/MM/yyyy' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
