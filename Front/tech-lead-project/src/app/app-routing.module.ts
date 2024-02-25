@@ -13,15 +13,15 @@ import { PesquisaLivroComponent } from './pages/pesquisa-livro/pesquisa-livro.co
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', pathMatch:"full", redirectTo: "lista-livro"},
+  { path: '', pathMatch:"full", redirectTo: "login"},
   { path: 'cadastro', component: CadastroComponent },
   { path: 'senha', component: SenhaComponent },
-  { path: 'administrador', component: AdministradorComponent },
-  { path: 'cliente', component: ClienteComponent },
-  { path: 'cadastro-livro', component: CadastroLivroComponent },
-  { path: 'edita-livro', component: EditaLivroComponent },
+  { path: 'administrador/:id', component: AdministradorComponent },
+  { path: 'cliente/:id', component: ClienteComponent },
+  { path: 'cadastro-livro/:id', component: CadastroLivroComponent },
+  { path: 'edita-livro/:id', component: EditaLivroComponent },
   { path: 'lista-livro', component: ListaLivroComponent },
-  { path: 'deleta-livro', component: DeletaLivroComponent },
+  { path: 'deleta-livro/:id', component: DeletaLivroComponent },
   { path: 'pesquisa-livro', component: PesquisaLivroComponent },
 ];
 

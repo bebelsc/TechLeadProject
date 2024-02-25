@@ -21,7 +21,7 @@ export class LivroService {
   }
 
   getLivroById(id: number): Observable<Livro> {
-    const url = `${this.apiUrl}/livros/${id}`;
+    const url = `${this.apiUrl}/buscar/${id}`;
     return this.http.get<Livro>(url);
   }
 
@@ -33,5 +33,10 @@ export class LivroService {
     const url = `${this.apiUrl}/excluir/${idLivro}`;
  
     return this.http.delete<void>(url);
+  }
+
+  editarLivro(idLivro: number, novoLivro: any): Observable<any> {
+    const url = `${this.apiUrl}/editar/${idLivro}`;
+    return this.http.put(url, novoLivro);
   }
 }

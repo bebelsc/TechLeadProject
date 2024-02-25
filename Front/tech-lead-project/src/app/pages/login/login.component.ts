@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginModel } from 'src/app/models/LoginModel';
+import { AuthService } from 'src/app/service/auth.service';
 import { LoginService } from 'src/app/service/login.service';
 
 @Component({
@@ -14,23 +15,42 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-     private router: Router,) { 
+     private router: Router,private authService: AuthService,) { 
 
   }
 
   ngOnInit(): void {
     this.loginForm= this.formBuilder.group(
       {
-        usuario: ['', Validators.required],
+        email: ['', Validators.required],
         senha: ['', Validators.required]
       }
     );
   }
 
-  submitLogin(){
-    debugger
-    var dadosLogin = this.loginForm.getRawValue() as LoginModel;
-
-    this.router.navigate(["/administrador"]);
+  submitLogin() {
+    // Obter os dados do formulário
+    const dadosLogin = this.loginForm.getRawValue() as LoginModel;
+  
+    // Chamar o serviço de login (substitua 'AuthService' pelo nome do seu serviço de autenticação)
+    this.authService.login(dadosLogin.email, dadosLogin.senha).subscribe(
+      (usuarioLogado) => {
+        if (usuarioLogado.tipo === 'Administrador' && usuarioLogado.idUsuario !== null  && usuarioLogado.idUsuario !== undefined) {
+          // Navegar para a página de Administrador mantendo o ID do usuário
+          this.router.navigate(['/administrador', usuarioLogado.idUsuario]);
+        } else if (usuarioLogado.tipo === 'Cliente' && usuarioLogado.idUsuario !== null  && usuarioLogado.idUsuario !== undefined) {
+          // Navegar para a página de Cliente mantendo o ID do usuário
+          this.router.navigate(['/cliente', usuarioLogado.idUsuario]);
+        } else {
+          // Tipo de usuário desconhecido
+          console.error('Tipo de usuário desconhecido:', usuarioLogado.tipo);
+        }
+      },
+      (erro) => {
+        console.error('Erro ao realizar login:', erro);
+        // Lógica adicional para lidar com erros de login
+      }
+    );
   }
+  
 }

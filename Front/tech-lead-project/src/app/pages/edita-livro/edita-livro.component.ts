@@ -47,22 +47,45 @@ export class EditaLivroComponent implements OnInit {
         },
         error => {
           console.error('Erro ao buscar livro:', error);
-          // Tratar o erro conforme necessário
         }
       );
     } else {
       console.error('ID do livro inválido');
-      // Tratar conforme necessário, talvez exibir uma mensagem para o usuário
     }
   }
-  
+
 
   editarLivro() {
-    // Implementar lógica de edição do livro
-    // Use this.livroEncontrado.id para obter o ID do livro
-    // Atualize as propriedades nome e autor com this.livroForm.get('nome').value, this.livroForm.get('autor').value
-    // Chame o serviço para editar o livro
-  }
+    if (this.livroEncontrado && this.livroForm && this.livroForm.get('nome') && this.livroForm.get('autor')) {
+      const idLivro = this.livroForm.get('idLivro')?.value;
+      const novoNome = this.livroForm.get('nome')?.value;
+      const novoAutor = this.livroForm.get('autor')?.value;
+  
+      // Verifica se o ID do livro é válido
+      if (idLivro) {
+        // Verifica se os novos dados não são nulos ou indefinidos
+        if (idLivro !== null && novoNome !== null && novoAutor !== null) {
+          this.livroService.editarLivro(idLivro, { nome: novoNome, autor: novoAutor })
+            .subscribe(
+              livroEditado => {
+                console.log('Livro editado com sucesso:', livroEditado);
+                // Lógica adicional se necessário
+              },
+              erro => {
+                console.error('Erro ao editar livro:', erro);
+                // Lógica adicional para tratar erro
+              }
+            );
+        } else {
+          console.error('Os novos dados do livro são inválidos.');
+        }
+      } else {
+        console.error('O ID do livro é inválido.');
+      }
+    } else {
+      console.error('O livro ou o formulário são nulos ou indefinidos.');
+    }
+  }  
 
   voltar() {
     // Implementar lógica de voltar

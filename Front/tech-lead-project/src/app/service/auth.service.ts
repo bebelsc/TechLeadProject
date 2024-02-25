@@ -1,38 +1,35 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { UsuarioModel } from 'src/app/models/UsuarioModel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private userSubject: BehaviorSubject<User | null>;
-  public user$: Observable<User | null>;
+  private apiUrl = 'http://localhost:8080/api/usuario';
 
-  constructor() {
-    this.userSubject = new BehaviorSubject<User | null>(null);
+  private userSubject: BehaviorSubject<UsuarioModel | null>;
+  public user$: Observable<UsuarioModel | null>;
+
+  constructor(private http: HttpClient) {
+    this.userSubject = new BehaviorSubject<UsuarioModel | null>(null);
     this.user$ = this.userSubject.asObservable();
   }
-
-  // Método para fazer login (chamado após a autenticação bem-sucedida no backend)
-  login(user: User) {
-    this.userSubject.next(user);
-    // Salvar informações do usuário no localStorage ou sessionStorage, se necessário
+  
+  login(email: string, senha: string): Observable<UsuarioModel> {
+    const body = { email, senha };
+    return this.http.post<UsuarioModel>(`${this.apiUrl}/login`, body);
   }
 
   // Método para fazer logout
   logout() {
     this.userSubject.next(null);
-    // Limpar informações do usuário do localStorage ou sessionStorage, se necessário
   }
 
   // Método para obter o ID do usuário atual
   getUserId(): number | null {
     const user = this.userSubject.value;
-    return user ? user.id : null;
+    return user ? user.idUsuario : null;
   }
-}
-
-interface User {
-  id: number;
-  // Adicione outras propriedades do usuário conforme necessário
 }

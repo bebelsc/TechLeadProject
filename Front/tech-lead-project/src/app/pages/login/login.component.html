@@ -6,9 +6,9 @@
 
         <div>
             <div>
-                <input class="input-login" type="text" placeholder="usuário" formControlName="usuario" />
+                <input class="input-login" type="text" placeholder="email" formControlName="email" />
             </div>
-            <div class="mensagem-erro" *ngIf="loginForm.get('usuario')?.errors?.required && loginForm.get('usuario')?.touched">
+            <div class="mensagem-erro" *ngIf="loginForm.get('email')?.errors?.required && loginForm.get('email')?.touched">
                 Campo Obrigatório!
             </div>
         </div>
