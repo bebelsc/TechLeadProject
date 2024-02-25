@@ -2,12 +2,16 @@ package com.techlead.projeto.controller;
 
 import com.techlead.projeto.model.Livro;
 import com.techlead.projeto.service.LivroService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/livro")
 public class LivroController {
 
@@ -30,5 +34,21 @@ public class LivroController {
     public ResponseEntity<Void> excluirLivro(@PathVariable Long id) {
         livroService.excluirLivro(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/listar")
+    public ResponseEntity<List<Livro>> listarLivros() {
+        List<Livro> livros = livroService.listarLivros();
+        return ResponseEntity.ok().body(livros);
+    }
+
+    @GetMapping("/buscar/{id}")
+    public ResponseEntity<Livro> buscarLivroPorId(@PathVariable Long id) {
+        Livro livro = livroService.buscarLivroPorId(id);
+        if (livro != null) {
+            return ResponseEntity.ok().body(livro);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

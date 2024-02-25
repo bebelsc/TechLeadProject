@@ -2,6 +2,9 @@ package com.techlead.projeto.service;
 
 import com.techlead.projeto.model.Usuario;
 import com.techlead.projeto.repository.UsuarioRepository;
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +16,9 @@ public class UsuarioService {
 
     public Usuario criarUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
+    }
+
+    public Optional<Usuario> findByEmailAndSenha(String email, String senha) {
+        return usuarioRepository.findByEmailAndSenha(email, senha);
     }
 }
