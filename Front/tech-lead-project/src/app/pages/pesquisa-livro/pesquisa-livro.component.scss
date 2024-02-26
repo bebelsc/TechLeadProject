@@ -1,0 +1,45 @@
+.conteudo-pesquisa-livro {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      margin-bottom: 5px;
+    }
+
+    input {
+      padding: 8px;
+      margin-bottom: 15px;
+    }
+
+    .botoes {
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        padding: 10px;
+        width: 30%;
+        cursor: pointer;
+
+        &:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    .mensagem-erro {
+      color: red;
+      font-size: 14px;
+    }
+  }
+}

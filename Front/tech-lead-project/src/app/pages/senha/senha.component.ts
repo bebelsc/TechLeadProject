@@ -20,11 +20,6 @@ export class SenhaComponent implements OnInit {
   }
 
   submitEsqueceuSenha() {
-    // Implemente a lógica para enviar a senha por e-mail
-    // var email = this.esqueceuSenhaForm.get('email')?.value;
-    // ... faça o que for necessário ...
-
-    // Redirecione para a página de login ou exiba uma mensagem de sucesso
     this.router.navigate(['/login']);
   }
 }

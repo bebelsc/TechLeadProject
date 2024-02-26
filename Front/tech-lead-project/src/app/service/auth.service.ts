@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UsuarioModel } from 'src/app/models/UsuarioModel';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +18,16 @@ export class AuthService {
     this.user$ = this.userSubject.asObservable();
   }
   
+
   login(email: string, senha: string): Observable<UsuarioModel> {
     const body = { email, senha };
-    return this.http.post<UsuarioModel>(`${this.apiUrl}/login`, body);
-  }
+    return this.http.post<UsuarioModel>(`${this.apiUrl}/login`, body).pipe(
+      tap((usuarioLogado: UsuarioModel) => {
+        localStorage.setItem('user', JSON.stringify(usuarioLogado));
+      })
+    );
+}
+
 
   // Método para fazer logout
   logout() {

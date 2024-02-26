@@ -18,10 +18,10 @@ const routes: Routes = [
   { path: 'senha', component: SenhaComponent },
   { path: 'administrador/:id', component: AdministradorComponent },
   { path: 'cliente/:id', component: ClienteComponent },
-  { path: 'cadastro-livro/:id', component: CadastroLivroComponent },
-  { path: 'edita-livro/:id', component: EditaLivroComponent },
+  { path: 'cadastro-livro', component: CadastroLivroComponent },
+  { path: 'edita-livro', component: EditaLivroComponent },
   { path: 'lista-livro', component: ListaLivroComponent },
-  { path: 'deleta-livro/:id', component: DeletaLivroComponent },
+  { path: 'deleta-livro', component: DeletaLivroComponent },
   { path: 'pesquisa-livro', component: PesquisaLivroComponent },
 ];
 

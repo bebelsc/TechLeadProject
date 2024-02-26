@@ -43,7 +43,6 @@ export class DeletaLivroComponent implements OnInit {
     } else {
       this.resetForm();
       console.error('ID do livro inválido');
-      // Tratar conforme necessário, talvez exibir uma mensagem para o usuário
     }
   }
 

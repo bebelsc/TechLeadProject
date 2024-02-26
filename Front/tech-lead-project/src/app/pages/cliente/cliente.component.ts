@@ -11,14 +11,14 @@ export class ClienteComponent {
   constructor(private router: Router) { }
 
   cadastrarLivro() {
-    this.router.navigate(['/cliente/cadastrar-livro']);
+    this.router.navigate(['/cadastro-livro']);
   }
 
   editarLivro() {
-    // Implemente a lógica para editar o livro
+    this.router.navigate(['/edita-livro']);
   }
 
   deletarLivro() {
-    // Implemente a lógica para deletar o livro
+    this.router.navigate(['/deleta-livro']);
   }
 }

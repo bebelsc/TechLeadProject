@@ -1,1 +1,31 @@
-<p>pesquisa-livro works!</p>
+<div class="conteudo-pesquisa-livro">
+
+    <h2>Pesquisar Livro</h2>
+  
+    <form [formGroup]="livroForm" (ngSubmit)="pesquisarLivro()">
+      <div>
+        <label for="idLivro">ID do Livro:</label>
+        <input type="text" id="idLivro" formControlName="idLivro" />
+        <div class="mensagem-erro" *ngIf="livroForm.get('idLivro')?.errors?.required && livroForm.get('idLivro')?.touched">
+          Campo Obrigatório!
+        </div>
+      </div>
+  
+      <div *ngIf="livroEncontrado">
+        <label for="nome">Nome do Livro:</label>
+        <input type="text" id="nome" formControlName="nome" [disabled]="true" readonly/>
+  
+        <label for="autor">Autor do Livro:</label>
+        <input type="text" id="autor" formControlName="autor" [disabled]="true" readonly />
+        
+        <label for="dataCadastro">Data de Cadastro:</label>
+        <input type="text" id="dataCadastro" [value]="livroEncontrado?.dataCadastro | date:'yyyy-MM-dd'" readonly>
+      </div>
+  
+      <div class="botoes">
+        <button type="button" (click)="pesquisarLivro()">Pesquisar</button>
+        <button type="button" (click)="cancelarPesquisa()">Cancelar</button>
+      </div>
+    </form>
+  
+</div>
