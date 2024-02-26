@@ -28,6 +28,7 @@ public class LivroService {
         // Atualizar os campos necessários
         livroExistente.setNome(livro.getNome());
         livroExistente.setAutor(livro.getAutor());
+        livroExistente.setQuantidadeLivros(livro.getQuantidadeLivros());
 
         return livroRepository.save(livroExistente);
     }

@@ -36,6 +36,17 @@ public class Livro {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataCadastro;
 
+    @Column(name = "quantidade_livros")
+    private int quantidadeLivros;
+
+    public int getQuantidadeLivros() {
+        return quantidadeLivros;
+    }
+
+    public void setQuantidadeLivros(int quantidadeLivros) {
+        this.quantidadeLivros = quantidadeLivros;
+    }
+
     @ManyToOne
     @JoinColumn(name = "idusuario_cadastrou")
     private Usuario usuario;

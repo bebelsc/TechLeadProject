@@ -1,13 +1,15 @@
 package com.techlead.projeto.service;
 
 import com.techlead.projeto.model.Emprestimo;
+import com.techlead.projeto.model.Livro;
 import com.techlead.projeto.model.StatusEmprestimo;
 import com.techlead.projeto.repository.EmprestimoRepository;
+import com.techlead.projeto.repository.LivroRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -16,21 +18,45 @@ import java.util.List;
 public class EmprestimoService {
 
     private final EmprestimoRepository emprestimoRepository;
+    @Autowired
+    private LivroService livroService;
+    @Autowired
+    private LivroRepository livroRepository;
 
     @Autowired
     public EmprestimoService(EmprestimoRepository emprestimoRepository) {
         this.emprestimoRepository = emprestimoRepository;
     }
 
-    public Emprestimo criarEmprestimo(Emprestimo emprestimo) {
+    public Emprestimo criarEmprestimo(Emprestimo emprestimo) throws Exception {
+    Livro livro = livroService.buscarLivroPorId(emprestimo.getLivro().getIdLivro());
+    if (livro.getQuantidadeLivros() > 0) {
+        livro.setQuantidadeLivros(livro.getQuantidadeLivros() - 1);
+        livroService.editarLivro(livro.getIdLivro(),livro); 
+
         emprestimo.setStatus(StatusEmprestimo.Criado);
         return emprestimoRepository.save(emprestimo);
+    } else {
+        throw new Exception("Não há livros disponíveis para empréstimo.");
     }
+}
 
-    public void devolverEmprestimo(Long idEmprestimo) {
+    public void devolverEmprestimo(Long idEmprestimo) throws Exception {
         Emprestimo emprestimo = buscarEmprestimo(idEmprestimo);
+
+    if (emprestimo.getStatus() != StatusEmprestimo.Devolvido) {
         emprestimo.setStatus(StatusEmprestimo.Devolvido);
+
+        Livro livro = emprestimo.getLivro();
+        livro.setQuantidadeLivros(livro.getQuantidadeLivros()+ 1);
+
+        // Salvar as alterações
+        livroRepository.save(livro);
         emprestimoRepository.save(emprestimo);
+    } else {
+        // Se o empréstimo já foi devolvido, você pode lançar uma exceção ou lidar de outra forma
+        throw new Exception("Este empréstimo já foi marcado como devolvido.");
+    }
     }
 
     public void aprovarRejeitarEmprestimo(Long idEmprestimo, boolean aprovar) {

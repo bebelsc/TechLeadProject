@@ -20,13 +20,13 @@ public class EmprestimoController {
     }
 
     @PostMapping("/criar-emprestimo")
-    public ResponseEntity<Emprestimo> criarEmprestimo(@RequestBody Emprestimo emprestimo) {
+    public ResponseEntity<Emprestimo> criarEmprestimo(@RequestBody Emprestimo emprestimo) throws Exception {
         Emprestimo novoEmprestimo = emprestimoService.criarEmprestimo(emprestimo);
         return new ResponseEntity<>(novoEmprestimo, HttpStatus.CREATED);
     }
 
     @PostMapping("/devolver-emprestimo/{idEmprestimo}")
-    public ResponseEntity<String> devolverEmprestimo(@PathVariable Long idEmprestimo) {
+    public ResponseEntity<String> devolverEmprestimo(@PathVariable Long idEmprestimo) throws Exception {
         emprestimoService.devolverEmprestimo(idEmprestimo);
         return new ResponseEntity<>("Empréstimo devolvido com sucesso.", HttpStatus.OK);
     }
