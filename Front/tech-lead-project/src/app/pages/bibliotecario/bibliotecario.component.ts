@@ -14,11 +14,15 @@ export class BibliotecarioComponent implements OnInit {
   }
 
   irParaAprovarRejeitarEmprestimo() {
-    this.router.navigate(['/realizar-emprestimo']);
+    this.router.navigate(['/aprovar-rejeitar-emprestimo']);
   }
 
   irParaDevolverEmprestimo() {
     this.router.navigate(['/devolver-emprestimo']);
+  }
+
+  irParaListarEmprestimos(){
+    this.router.navigate(['/listar-emprestimos']);
   }
 
   logout() {

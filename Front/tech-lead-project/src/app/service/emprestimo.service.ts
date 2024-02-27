@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class EmprestimoService {
   constructor(private http: HttpClient) { }
 
   getDetalhesEmprestimo(idEmprestimo: number): Observable<any> {
-    const url = `${this.apiUrl}/detalhes-emprestimo/${idEmprestimo}`;
+    const url = `${this.apiUrl}/${idEmprestimo}`;
     return this.http.get(url);
   }
 
@@ -23,5 +23,13 @@ export class EmprestimoService {
 
   realizarEmprestimo(emprestimoData: any): Observable<any>{
     return this.http.post(`${this.apiUrl}/criar-emprestimo`, emprestimoData);
+  }
+
+  aprovarRejeitarEmprestimo(idEmprestimo: number, aprovar: boolean): Observable<any> {
+    const url = `${this.apiUrl}/aprovar-rejeitar-emprestimo/${idEmprestimo}`;
+    
+    const params = new HttpParams().set('aprovar', aprovar.toString());
+
+    return this.http.post(url, null, { params });
   }
 }

@@ -13,6 +13,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmprestimoService {
@@ -50,11 +51,9 @@ public class EmprestimoService {
         Livro livro = emprestimo.getLivro();
         livro.setQuantidadeLivros(livro.getQuantidadeLivros()+ 1);
 
-        // Salvar as alterações
         livroRepository.save(livro);
         emprestimoRepository.save(emprestimo);
     } else {
-        // Se o empréstimo já foi devolvido, você pode lançar uma exceção ou lidar de outra forma
         throw new Exception("Este empréstimo já foi marcado como devolvido.");
     }
     }
@@ -95,6 +94,11 @@ public class EmprestimoService {
                 }
             }
         }
+    }
+
+    public Emprestimo buscarEmprestimoPorId(Long id) {
+        Optional<Emprestimo> emprestimoOptional = emprestimoRepository.findById(id);
+        return emprestimoOptional.orElse(null);
     }
 }
 

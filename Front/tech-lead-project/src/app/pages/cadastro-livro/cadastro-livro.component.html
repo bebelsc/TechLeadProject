@@ -18,8 +18,17 @@
           Campo Obrigatório!
         </div>
       </div>
+
+      <div>
+        <label for="quantidade">Quantidade de Livros:</label>
+        <input type="number" id="quantidade" formControlName="quantidade" />
+        <div class="mensagem-erro" *ngIf="livroForm.get('quantidade')?.errors?.required && livroForm.get('quantidade')?.touched">
+          Campo Obrigatório!
+        </div>
+      </div>
   
       <button type="submit" [disabled]="!livroForm.valid">Cadastrar Livro</button>
+      
     </form>
   
   </div>

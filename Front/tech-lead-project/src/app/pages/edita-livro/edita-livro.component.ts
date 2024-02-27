@@ -37,7 +37,6 @@ export class EditaLivroComponent implements OnInit {
       this.livroService.getLivroById(idLivro).subscribe(
         (livro: Livro) => {
           this.livroEncontrado = livro;
-          // Verifique se os campos do formulário estão definidos antes de chamar patchValue
           if (this.livroForm.get('nome') && this.livroForm.get('autor')) {
             this.livroForm.patchValue({
               nome: livro.nome,
@@ -61,19 +60,15 @@ export class EditaLivroComponent implements OnInit {
       const novoNome = this.livroForm.get('nome')?.value;
       const novoAutor = this.livroForm.get('autor')?.value;
   
-      // Verifica se o ID do livro é válido
       if (idLivro) {
-        // Verifica se os novos dados não são nulos ou indefinidos
         if (idLivro !== null && novoNome !== null && novoAutor !== null) {
           this.livroService.editarLivro(idLivro, { nome: novoNome, autor: novoAutor })
             .subscribe(
               livroEditado => {
                 console.log('Livro editado com sucesso:', livroEditado);
-                // Lógica adicional se necessário
               },
               erro => {
                 console.error('Erro ao editar livro:', erro);
-                // Lógica adicional para tratar erro
               }
             );
         } else {
@@ -88,7 +83,6 @@ export class EditaLivroComponent implements OnInit {
   }  
 
   voltar() {
-    // Implementar lógica de voltar
-    //this.router.navigate(...)
+    this.router.navigate(['/administrador'])
   }
 }

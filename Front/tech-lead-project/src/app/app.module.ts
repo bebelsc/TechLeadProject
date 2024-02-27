@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdministradorComponent } from './pages/administrador/administrador.component';
 import { ClienteComponent } from './pages/cliente/cliente.component';
 import { SenhaComponent } from './pages/senha/senha.component';
@@ -44,7 +44,8 @@ import { ListarEmprestimosComponent } from './pages/listar-emprestimos/listar-em
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -45,4 +45,14 @@ public class EmprestimoController {
         emprestimoService.verificarEmprestimosAtrasados();
         return new ResponseEntity<>("Verificação de empréstimos atrasados concluída.", HttpStatus.OK);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Emprestimo> buscarEmprestimoPorId(@PathVariable Long id) {
+        Emprestimo emprestimo = emprestimoService.buscarEmprestimoPorId(id);
+        if (emprestimo != null) {
+            return ResponseEntity.ok().body(emprestimo);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

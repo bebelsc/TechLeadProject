@@ -18,4 +18,9 @@ export class UsuarioService {
     const url = `${this.baseUrl}/${id}`;
     return this.http.get<UsuarioModel>(url);
   }
+
+  criarUsuario(usuario: UsuarioModel): Observable<UsuarioModel> {
+    const url = `${this.baseUrl}/criar`;
+    return this.http.post<UsuarioModel>(url, usuario);
+  }
 }

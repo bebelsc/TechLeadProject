@@ -34,6 +34,9 @@ export class AdministradorComponent {
       case 'detalhar':
         this.router.navigate(['/pesquisa-livro']);
         break;
+      case 'logout':
+        this.router.navigate(['/login']);
+        break;
       default:
         break;
     }

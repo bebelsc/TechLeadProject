@@ -18,7 +18,15 @@ export class ClienteComponent {
     this.router.navigate(['/edita-livro']);
   }
 
-  deletarLivro() {
+  deletarLivro(){
     this.router.navigate(['/deleta-livro']);
+  }
+
+  fazerEmprestimo(){
+    this.router.navigate(['/realizar-emprestimo'])
+  }
+
+  logout(){
+    this.router.navigate(['/login']);
   }
 }

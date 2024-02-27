@@ -2,10 +2,19 @@ package com.techlead.projeto.model;
 
 public class LoginRequest {
 
+    
+
+    public LoginRequest() {
+    }
+
+
+    public LoginRequest(String email, String senha) {
+        this.email = email;
+        this.senha = senha;
+    }
+
     private String email;
     private String senha;
-
-    // getters e setters
 
     public String getEmail() {
         return email;

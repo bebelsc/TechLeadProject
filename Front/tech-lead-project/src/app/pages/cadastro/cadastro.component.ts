@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CadastroModel } from 'src/app/models/CadastroModel';
-
+import { UsuarioModel } from 'src/app/models/UsuarioModel';
+import { UsuarioService } from 'src/app/service/usuario.service'; 
 
 @Component({
   selector: 'app-cadastro',
@@ -13,7 +14,11 @@ export class CadastroComponent implements OnInit {
 
   cadastroForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private usuarioService: UsuarioService
+  ) { }
 
   ngOnInit(): void {
     this.cadastroForm = this.formBuilder.group({
@@ -24,11 +29,17 @@ export class CadastroComponent implements OnInit {
   }
 
   submitCadastro() {
-    // Implemente a lógica para cadastrar o usuário
-    // var dadosCadastro = this.cadastroForm.getRawValue() as CadastroModel;
-    // ... faça o que for necessário ...
-    var dadosCadastro = this.cadastroForm.getRawValue() as CadastroModel;
-    // Após cadastrar, redirecione para a página de login (ou outra página desejada)
-    this.router.navigate(['/login']);
+    if (this.cadastroForm.valid) {
+      var dadosCadastro = this.cadastroForm.getRawValue() as UsuarioModel;
+
+      this.usuarioService.criarUsuario(dadosCadastro).subscribe(
+        response => {
+          console.log('Usuário cadastrado com sucesso:', response);
+        },
+        error => {
+          console.error('Erro ao cadastrar usuário:', error);
+        }
+      );
+    }
   }
 }

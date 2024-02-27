@@ -23,26 +23,29 @@ export class CadastroLivroComponent {
     this.livroForm = this.formBuilder.group({
       nome: ['', Validators.required],
       autor: ['', Validators.required],
+      quantidade: [1, Validators.required] 
     });
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
   }
   
   cadastrarLivro() {
-    debugger
     if (this.livroForm.valid && this.user) {
       const nomeControl = this.livroForm.get('nome');
       const autorControl = this.livroForm.get('autor');
+      const quantidadeControl= this.livroForm.get('quantidade');
 
       const data = new Date();
 
       const datePipe = new DatePipe('en-US');
       const formattedDate = datePipe.transform(data, 'yyyy-MM-dd'); 
       if (nomeControl && autorControl) {
+        const user = this.authService.getUserData();
         const livroData = {
           nome: nomeControl.value,
           autor: autorControl.value,
           dataCadastro: formattedDate,
-          user: this.user
+          quantidadeLivros: quantidadeControl?.value,
+          idUsuario: user?.idUsuario
         };
 
         this.livroService.cadastrarLivro(livroData).subscribe(
