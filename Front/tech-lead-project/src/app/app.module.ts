@@ -18,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BibliotecarioComponent } from './pages/bibliotecario/bibliotecario.component';
 import { RealizarEmprestimoComponent } from './pages/realizar-emprestimo/realizar-emprestimo.component';
 import { DevolverEmprestimoComponent } from './pages/devolver-emprestimo/devolver-emprestimo.component';
+import { AprovarRejeitarEmprestimoComponent } from './pages/aprovar-rejeitar-emprestimo/aprovar-rejeitar-emprestimo.component';
+import { ListarEmprestimosComponent } from './pages/listar-emprestimos/listar-emprestimos.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { DevolverEmprestimoComponent } from './pages/devolver-emprestimo/devolve
     BibliotecarioComponent,
     RealizarEmprestimoComponent,
     DevolverEmprestimoComponent,
+    AprovarRejeitarEmprestimoComponent,
+    ListarEmprestimosComponent,
   ],
   imports: [
     BrowserModule,

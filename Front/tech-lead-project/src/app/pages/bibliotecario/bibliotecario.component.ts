@@ -13,7 +13,7 @@ export class BibliotecarioComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  irParaRealizarEmprestimo() {
+  irParaAprovarRejeitarEmprestimo() {
     this.router.navigate(['/realizar-emprestimo']);
   }
 

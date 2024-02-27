@@ -21,4 +21,8 @@ public class UsuarioService {
     public Optional<Usuario> findByEmailAndSenha(String email, String senha) {
         return usuarioRepository.findByEmailAndSenha(email, senha);
     }
+
+    public Optional<Usuario> buscarUsuarioPorId(Long id) {
+        return usuarioRepository.findById(id);
+    }
 }

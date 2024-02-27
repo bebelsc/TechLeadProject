@@ -1,0 +1,30 @@
+<!-- aprovar-rejeitar-emprestimo.component.html -->
+
+<div class="emprestimo-container">
+    <h2>Aprovar/Rejeitar Empréstimo</h2>
+  
+    <!-- Pesquisar por ID do Empréstimo -->
+    <label for="emprestimoId">ID do Empréstimo:</label>
+    <input type="number" id="emprestimoId" [(ngModel)]="emprestimoId" required>
+    <button (click)="pesquisarEmprestimo()">Pesquisar</button>
+  
+    <!-- Exibir Informações do Empréstimo -->
+    <div *ngIf="emprestimo">
+      <label for="livroNome">Livro:</label>
+      <input type="text" id="livroNome" [(ngModel)]="emprestimoLivro.nome" readonly>
+  
+      <label for="autorNome">Autor:</label>
+      <input type="text" id="autorNome" [(ngModel)]="emprestimoLivro.autor" readonly>
+  
+      <label for="usuarioNome">Usuário:</label>
+      <input type="text" id="usuarioNome" [(ngModel)]="emprestimoUsuario.nome" readonly>
+  
+      <label for="quantidadeDias">Quantidade de Dias:</label>
+      <input type="number" id="quantidadeDias" [(ngModel)]="emprestimo.quantidadedias" readonly>
+    </div>
+  
+    <!-- Botões Aprovar/Rejeitar -->
+    <button (click)="aprovarEmprestimo()">Aprovar</button>
+    <button (click)="rejeitarEmprestimo()">Rejeitar</button>
+  </div>
+  
