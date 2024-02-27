@@ -1,0 +1,39 @@
+<div class="realizar-emprestimo-container">
+    <h2>Realizar Empréstimo</h2>
+    <form [formGroup]="emprestimoForm" (ngSubmit)="realizarEmprestimo()">
+      <div>
+        <label for="idLivro">ID do Livro:</label>
+        <input type="text" id="idLivro" formControlName="idLivro" />
+        <button type="button" (click)="buscarLivro()">Buscar Livro</button>
+        <div class="mensagem-erro" *ngIf="livroNaoEncontrado">
+          Livro não encontrado!
+        </div>
+      </div>
+  
+      <div *ngIf="livroEncontrado">
+        <label for="nome">Nome do Livro:</label>
+        <input type="text" id="nome" formControlName="nome" readonly />
+  
+        <label for="autor">Autor do Livro:</label>
+        <input type="text" id="autor" formControlName="autor" readonly />
+  
+        <label for="quantidadeLivros">Quantidade de Livros:</label>
+        <input type="text" id="quantidadeLivros" formControlName="quantidadeLivros" readonly />
+      </div>
+  
+      <div>
+        <label for="quantidadeDias">Quantidade de Dias:</label>
+        <input type="text" id="quantidadeDias" formControlName="quantidadeDias" />
+        <div class="mensagem-erro" *ngIf="emprestimoForm.get('quantidadeDias')?.errors?.required &&
+                                            emprestimoForm.get('quantidadeDias')?.touched">
+          Campo Obrigatório!
+        </div>
+      </div>
+  
+      <div class="botoes">
+        <button type="submit">Realizar Empréstimo</button>
+        <button type="button" (click)="cancelar()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+  

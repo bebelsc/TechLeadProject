@@ -1,0 +1,35 @@
+<div class="conteudo-devolver-emprestimo">
+    <h2>Devolver Empréstimo</h2>
+    
+    <form [formGroup]="devolucaoForm" (ngSubmit)="pesquisarEmprestimo()">
+      <div>
+        <label for="idEmprestimo">ID do Empréstimo:</label>
+        <input type="text" id="idEmprestimo" formControlName="idEmprestimo" />
+        <div class="mensagem-erro" *ngIf="devolucaoForm.get('idEmprestimo')?.errors?.required && devolucaoForm.get('idEmprestimo')?.touched">
+          Campo Obrigatório!
+        </div>
+      </div>
+  
+      <div *ngIf="emprestimoEncontrado">
+        <label for="nomeLivro">Nome do Livro:</label>
+        <input type="text" id="nomeLivro" [value]="emprestimoEncontrado.livro.nome" readonly />
+  
+        <label for="autorLivro">Autor do Livro:</label>
+        <input type="text" id="autorLivro" [value]="emprestimoEncontrado.livro.autor" readonly />
+  
+        <label for="quantidadeDias">Quantidade de Dias:</label>
+        <input type="text" id="quantidadeDias" [value]="emprestimoEncontrado.quantidadeDias" readonly />
+  
+        <label for="dataInicioEmprestimo">Data de Início do Empréstimo:</label>
+        <input type="text" id="dataInicioEmprestimo" [value]="emprestimoEncontrado.dataInicioEmprestimo | date:'yyyy-MM-dd'" readonly />
+  
+        <label for="statusEmprestimo">Status do Empréstimo:</label>
+        <input type="text" id="statusEmprestimo" [value]="emprestimoEncontrado.status" readonly />
+      </div>
+  
+      <div class="botoes">
+        <button type="button" (click)="devolverEmprestimo()" [disabled]="!emprestimoEncontrado">Devolver Empréstimo</button>
+      </div>
+    </form>
+  </div>
+  

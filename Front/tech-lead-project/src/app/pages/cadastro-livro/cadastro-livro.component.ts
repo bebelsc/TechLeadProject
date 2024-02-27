@@ -33,7 +33,7 @@ export class CadastroLivroComponent {
       const nomeControl = this.livroForm.get('nome');
       const autorControl = this.livroForm.get('autor');
 
-      const data = new Date(); // Substitua isso pela sua data
+      const data = new Date();
 
       const datePipe = new DatePipe('en-US');
       const formattedDate = datePipe.transform(data, 'yyyy-MM-dd'); 

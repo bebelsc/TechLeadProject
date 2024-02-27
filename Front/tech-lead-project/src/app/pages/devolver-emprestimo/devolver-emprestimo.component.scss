@@ -1,0 +1,56 @@
+.conteudo-devolver-emprestimo {
+    max-width: 400px;
+    margin: auto;
+  
+    h2 {
+      text-align: center;
+    }
+  
+    form {
+      display: flex;
+      flex-direction: column;
+  
+      div {
+        margin-bottom: 15px;
+  
+        label {
+          margin-bottom: 5px;
+        }
+  
+        input {
+          width: 100%;
+          padding: 8px;
+        }
+  
+        .mensagem-erro {
+          color: red;
+          font-size: 14px;
+        }
+      }
+  
+      .botoes {
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+  
+        button {
+          padding: 10px;
+          cursor: pointer;
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          border-radius: 5px;
+  
+          &:hover {
+            background-color: #45a049;
+          }
+  
+          &:disabled {
+            background-color: #a0a0a0;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+  

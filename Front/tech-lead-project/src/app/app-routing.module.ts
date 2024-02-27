@@ -10,6 +10,9 @@ import { EditaLivroComponent } from './pages/edita-livro/edita-livro.component';
 import { ListaLivroComponent } from './pages/lista-livro/lista-livro.component';
 import { DeletaLivroComponent } from './pages/deleta-livro/deleta-livro.component';
 import { PesquisaLivroComponent } from './pages/pesquisa-livro/pesquisa-livro.component';
+import { BibliotecarioComponent } from './pages/bibliotecario/bibliotecario.component';
+import { RealizarEmprestimoComponent } from './pages/realizar-emprestimo/realizar-emprestimo.component';
+import { DevolverEmprestimoComponent } from './pages/devolver-emprestimo/devolver-emprestimo.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -23,6 +26,9 @@ const routes: Routes = [
   { path: 'lista-livro', component: ListaLivroComponent },
   { path: 'deleta-livro', component: DeletaLivroComponent },
   { path: 'pesquisa-livro', component: PesquisaLivroComponent },
+  { path: 'bibliotecario', component: BibliotecarioComponent },
+  { path: 'realizar-emprestimo', component: RealizarEmprestimoComponent },
+  { path: 'devolver-emprestimo', component: DevolverEmprestimoComponent },
 ];
 
 @NgModule({

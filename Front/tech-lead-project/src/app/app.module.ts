@@ -15,6 +15,9 @@ import { DeletaLivroComponent } from './pages/deleta-livro/deleta-livro.componen
 import { EditaLivroComponent } from './pages/edita-livro/edita-livro.component';
 import { ListaLivroComponent } from './pages/lista-livro/lista-livro.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BibliotecarioComponent } from './pages/bibliotecario/bibliotecario.component';
+import { RealizarEmprestimoComponent } from './pages/realizar-emprestimo/realizar-emprestimo.component';
+import { DevolverEmprestimoComponent } from './pages/devolver-emprestimo/devolver-emprestimo.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { HttpClientModule } from '@angular/common/http';
     DeletaLivroComponent,
     EditaLivroComponent,
     ListaLivroComponent,
+    BibliotecarioComponent,
+    RealizarEmprestimoComponent,
+    DevolverEmprestimoComponent,
   ],
   imports: [
     BrowserModule,
